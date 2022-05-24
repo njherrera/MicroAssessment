@@ -6,4 +6,4 @@ My first step in the process is to determine the structure of the project in ter
 
 Parsing expressions
 
-My first inclination is to do some sort of split to separate parts of the expression and/or checking to see if the expression contains "+", "-", "^", or "()". 
+My first inclination is to do some sort of split to separate parts of the expression and/or checking to see if the expression contains "+", "-", "^", or "()", as well as cut out all the white spaces (this allows us to more cleanly work with the expression). The first step is cutting out all the white spaces, which calls for a fairly straightforward use of Java's replaceAll method.
