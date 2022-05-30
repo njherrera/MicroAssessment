@@ -10,7 +10,9 @@ Something I am realizing is that while Weiss's explanation of building an expres
 
 CLASS STRUCTURE
 
-Since I'll be using Weiss's expression tree method that uses postfix notation, I will likely at bare minimum need a Node class, a class concerned with parsing an infix expression and turning it into an expression tree, and a Main class which runs a scanner that reads the user's input and calculates it. A Calculator class that actually computes and outputs the value of a given expression tree is also required to me personally, as I want to avoid putting actual methods/logic besides the scanner in Main.
+Since I'll be using Weiss's expression tree method that uses postfix notation, I will likely at bare minimum need a Node class, a class concerned with parsing a postfix expression and turning it into an expression tree,  a class that converts infix notiaton into postfix using the shunting yard algorithm, and a Main class which runs a scanner that reads the user's input and calculates it. A Calculator class that actually computes and outputs the value of a given expression tree is also required to me personally, as I want to avoid putting actual methods/logic besides the scanner in Main. 
+
+As a side note, one of my goals for this asssessment is to write as much of my own code as possbile - hence studying Weiss's textbook to learn how to generate an expression tree instead of just copying implementation from online. However, given that this approach has already taken me quite a while (I estimate a solid hour and a half for finding a textbook that covers what I'm trying to implement, studying it, and finally figuring out pseudocode), I don't think that I'll be able to follow this approach for the rest of the assignment. While reinventing the wheel (so to speak) would be very satisfying, at this point I have to go with the solution that makes the most sense time-wise. As such, I will also be studying other people's implementation of evaluating the result of an expression tree as well as turning infix notation into postfix notation using the shunting yard algorithmn.
 
 
 
