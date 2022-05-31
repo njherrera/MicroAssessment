@@ -3,7 +3,7 @@ package com.mucho;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class PostfixConverter {
+public class PostfixToTree {
 
     // this class needs a method to turn a postfix expression into an expression tree
 
