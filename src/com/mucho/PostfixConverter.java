@@ -1,6 +1,7 @@
 package com.mucho;
 
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class PostfixConverter {
 
@@ -12,8 +13,30 @@ public class PostfixConverter {
         // form new tree with root being operator, and left and right children being T2 and T1 respectively
     // push new tree onto stack
     // continue reading expression until there are no more symbols, at which point we should have an expression tree
-    public Node convertPostfixToTree(String expression){
+    public Node convertPostfixToTree(StringTokenizer expression){
         Stack<Node> nodeStack = new Stack<Node>();
+        while (expression.hasMoreTokens()){
+            String currentToken = expression.nextToken();
+            if (isNumeric(currentToken)){
+                Node newOperandNode = new Node(currentToken);
+                nodeStack.push(newOperandNode);
+            } else {
+                Node T1 = nodeStack.pop();
+                Node T2 = nodeStack.pop();
+                Node newOperatorTree = new Node(currentToken, T2, T1);
+                nodeStack.push(newOperatorTree);
+            }
+        }
+        return nodeStack.pop();
+    }
 
+    // helper method to determine if a string object is numeric
+    public static boolean isNumeric (String str){
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException ex){
+            return false;
+        }
     }
 }
