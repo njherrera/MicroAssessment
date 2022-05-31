@@ -5,12 +5,17 @@ import java.util.StringTokenizer;
 public class Main {
 
     public static void main(String[] args) {
-	String str = "-a a a 22     bbb";
-        StringTokenizer str2 = new StringTokenizer(str);
-        System.out.println(str2.countTokens());
+        Node root = new Node("^");
+        root.setLeft(new Node("*"));
+        root.setRight(new Node("/"));
+        root.getLeft().setLeft(new Node("-"));
+        root.getLeft().setRight(new Node ("5"));
+        root.getRight().setLeft(new Node("21"));
+        root.getRight().setRight(new Node("7"));
+        root.getLeft().getLeft().setLeft(new Node("10"));
+        root.getLeft().getLeft().setRight(new Node("5"));
 
-        while (str2.hasMoreTokens()){
-            System.out.println(str2.nextToken());
+        System.out.println(TreeCalculator.evaluateTree(root));
         }
     }
-}
+
