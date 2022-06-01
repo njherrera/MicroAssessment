@@ -32,3 +32,9 @@ To get clean separation between pieces of the expression I had to make some modi
 To solve the negation/subtraction problem, I will continue to search for solutions online, as well as closely examine the solutions that I have found, especially because I have already found code that processes negation accurately (thanks to Stackoverflow user Eugene). One important note is that because I am figuring out some parts of my solution by looking at code examples, it is essential that I take a close look at my code and properly understand how it all works - not only must I completely understand how the code in each of my classes works individually, I must also understand how my classes work in concert. This is something that I think is essential for myself and any programmer, as I believe that if you don't fully understand what you're programming, it's near impossible to make meaningful improvement as a software developer.
 
 I finished functionality for converting an infix expression to postfix, with support for negative numbers and double digits! From here the next step is extending my TreeCalculator and PostfixToTree classes to support negative numbers, although I estimate that it won't take me too long.
+
+FINISHING UP
+
+Before I started working on modifying my TreeCalculator and PostfixToTree classes to work with negative numbers, first I started work on writing tests for each class except Node (although if time permits, I'll try to think of some tests I could run on that class). To do so I'm using JUnit and JUnit Jupiter, versions 4.12 and 5.82 respectively.
+
+I don't expect adding support for negative numbers in PostfixToTree and TreeCalculator to be too difficult, since all it should take in PostfixToTree is figuring out a way to only pop one operand and setting it as the left child of the "~" operator. For TreeCalculator it should also be fairly simple - I suspect the only change I'll need to make is handling "~" in processOperator.
