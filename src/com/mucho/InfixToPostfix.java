@@ -3,6 +3,7 @@ package com.mucho;
 import org.junit.Test;
 
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class InfixToPostfix {
     private static final String operators = "-+/*^";

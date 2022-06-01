@@ -18,6 +18,11 @@ public class Node {
         this.right = rightNode;
     }
 
+    public Node(String data, Node leftNode){
+        this.data = data;
+        this.left = leftNode;
+    }
+
     public String getData() {
         return data;
     }

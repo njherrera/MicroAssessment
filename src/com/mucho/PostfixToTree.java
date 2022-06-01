@@ -16,11 +16,21 @@ public class PostfixToTree {
         // form new tree with root being operator, and left and right children being T2 and T1 respectively
     // push new tree onto stack
     // continue reading expression until there are no more symbols, at which point we should have an expression tree
-    public Node convertPostfixToTree(StringTokenizer expression){
+    public static Node convertPostfixToTree(String expression){
+
+        StringTokenizer expressionTokenized = new StringTokenizer((expression));
         Stack<Node> nodeStack = new Stack<Node>();
-        while (expression.hasMoreTokens()){
-            String currentToken = expression.nextToken();
-            if (isNumeric(currentToken)){
+
+        while (expressionTokenized.hasMoreTokens()){
+            String currentToken = expressionTokenized.nextToken();
+            if (currentToken.charAt(0) == '~'){ // if the first character is "~", it means that we're negating the following number
+                Node newOperandNode = new Node(currentToken.substring(1));
+                nodeStack.push(newOperandNode);
+                Node operand = nodeStack.pop();
+                Node newNegationTree = new Node("~", operand);
+                nodeStack.push(newNegationTree);
+            }
+            else if (isNumeric(currentToken)){
                 Node newOperandNode = new Node(currentToken);
                 nodeStack.push(newOperandNode);
             } else {

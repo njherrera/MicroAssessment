@@ -18,7 +18,9 @@ public class TreeCalculator {
         // postorder traversal, getting left and right nodes first, then root node
         double x = evaluateTree(root.getLeft());
         double y = evaluateTree(root.getRight());
-        return processOperator(root.getData(), x, y);
+        if (root.getLeft() != null && root.getRight() != null) { // if root has both children, it's NOT the unary negative operator, so we can proceed as normal with the processOperator method
+            return processOperator(root.getData(), x, y);
+        } else return processTilde(root.getData(), x); // if a root doesn't have both children, it means that we're negating its left child
     }
 
     public static double processOperator(String operator, double leftNodeValue, double rightNodeValue){
@@ -36,10 +38,10 @@ public class TreeCalculator {
         }
         else if (operator.equals("^")){
             return Math.pow(leftNodeValue, rightNodeValue);
-        }
-        else if (operator.equals("~")){
-            return leftNodeValue * -1;
-        }
-        return 0; // if we get to here, it means that something has gone wrong
+        } else return 0; // if we get to here, it means that something has gone wrong
+    }
+
+    public static double processTilde(String operator, double leftNodeValue){
+        return leftNodeValue * -1;
     }
 }
