@@ -5,6 +5,9 @@ import java.util.StringTokenizer;
 
 public class PostfixToTree {
 
+/*    personal notes:
+    when generating tree, pop only one operand for negation (which one?)
+        */
     // this class needs a method to turn a postfix expression into an expression tree
 
     // read the expression one symbol at a time

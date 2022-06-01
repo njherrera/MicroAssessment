@@ -18,7 +18,7 @@ public class Main {
         System.out.println(TreeCalculator.evaluateTree(root));
         */
 
-        String str = "10-5";
+        String str = "-10 + 4";
         System.out.println(InfixToPostfix.convertToPostfix(str));
         }
 

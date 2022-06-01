@@ -2,6 +2,9 @@ package com.mucho;
 
 public class TreeCalculator {
 
+    // personal notes
+    // evaluation only looks at left child for negation (negation operator will always only have left child)
+
     // since the tree was constructed from postfix notation, we'll be evaluating it using a postorder traversal
     // making methods static so that we don't have to instantiate a TreCalculator object
     public static double evaluateTree (Node root){

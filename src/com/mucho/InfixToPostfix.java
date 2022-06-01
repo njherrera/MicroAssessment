@@ -38,6 +38,7 @@ public class InfixToPostfix {
                 while (!characterStack.isEmpty() && characterStack.peek() != '('){
                     if (operatorGreaterOrEqual(characterStack.peek(), negationsConverted.charAt(i))){
                         output.append(characterStack.pop());
+                        output.append(' ');
                     }
                     else{
                         break;
@@ -49,12 +50,11 @@ public class InfixToPostfix {
                 characterStack.push(negationsConverted.charAt(i));
             }
             else if (negationsConverted.charAt(i) == ')'){
-                while (!characterStack.isEmpty() && characterStack.peek() != '(')
-                {
+                while (!characterStack.isEmpty() && characterStack.peek() != '(') {
                     output.append(characterStack.pop());
+                    output.append(' ');
                 }
-                if (!characterStack.isEmpty())
-                {
+                if (!characterStack.isEmpty()) {
                     characterStack.pop();
                 }
             }
@@ -68,6 +68,7 @@ public class InfixToPostfix {
         }
         while (!characterStack.empty()){
             output.append(characterStack.pop());
+            output.append(' ');
         }
         return output.toString();
     }
