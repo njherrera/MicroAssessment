@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 public class Main {
 
     public static void main(String[] args) {
-        Node root = new Node("^");
+/*        Node root = new Node("^");
         root.setLeft(new Node("*"));
         root.setRight(new Node("/"));
         root.getLeft().setLeft(new Node("-"));
@@ -16,6 +16,11 @@ public class Main {
         root.getLeft().getLeft().setRight(new Node("5"));
 
         System.out.println(TreeCalculator.evaluateTree(root));
+        */
+
+        String str = "10-5*-5*10";
+        System.out.println(InfixToPostfix.convertToPostfix(str));
         }
+
     }
 
