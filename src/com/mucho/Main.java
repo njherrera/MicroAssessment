@@ -18,7 +18,7 @@ public class Main {
         System.out.println(TreeCalculator.evaluateTree(root));
         */
 
-        String str = "-4 * (3 +4) - 4^2";
+        String str = "-4 * (300 +4) - 4^2";
         System.out.println(InfixToPostfix.convertToPostfix(str));
         }
 

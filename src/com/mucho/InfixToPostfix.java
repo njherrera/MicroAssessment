@@ -1,10 +1,13 @@
 package com.mucho;
 
+import org.junit.Test;
+
 import java.util.Stack;
 
 public class InfixToPostfix {
     private static final String operators = "-+/*^";
     private static final String operands = "0123456789";
+
 
     public static String convertToPostfix(String infixExpr){
         String exprNoWhiteSpaces = infixExpr.replaceAll("\\s+","");
@@ -32,7 +35,7 @@ public class InfixToPostfix {
 
         for (int i = 0; i < negationsConverted.length(); i++){
             if (negationsConverted.charAt(i) == '~'){
-                output.append('-');
+                output.append('~');
             }
             else if (isOperator(negationsConverted.charAt(i))){
                 while (!characterStack.isEmpty() && characterStack.peek() != '('){
