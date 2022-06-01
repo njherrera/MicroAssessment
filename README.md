@@ -37,4 +37,4 @@ FINISHING UP
 
 Before I started working on modifying my TreeCalculator and PostfixToTree classes to work with negative numbers, first I started work on writing tests for each class except Node (although if time permits, I'll try to think of some tests I could run on that class). To do so I'm using JUnit and JUnit Jupiter, versions 4.12 and 5.82 respectively.
 
-I don't expect adding support for negative numbers in PostfixToTree and TreeCalculator to be too difficult, since all it should take in PostfixToTree is figuring out a way to only pop one operand and setting it as the left child of the "~" operator. For TreeCalculator it should also be fairly simple - I suspect the only change I'll need to make is handling "~" in processOperator.
+I don't expect adding support for negative numbers in PostfixToTree and TreeCalculator to be too difficult, since all it should take in PostfixToTree is figuring out a way to only pop one operand and setting it as the left child of the tilde operator. For TreeCalculator it should also be fairly simple - I suspect the only change I'll need to make is handling tilde in processOperator.
