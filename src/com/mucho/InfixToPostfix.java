@@ -3,38 +3,38 @@ package com.mucho;
 import java.util.Stack;
 
 public class InfixToPostfix {
-    private static final String operators = "~-+/*^";
+    private static final String operators = "-+/*^";
     private static final String operands = "0123456789";
 
     public static String convertToPostfix(String infixExpr){
+        String exprNoWhiteSpaces = infixExpr.replaceAll("\\s+","");
         StringBuilder negationsConverted = new StringBuilder();
-        Stack<Character> characterStack = new Stack<Character>();
 
-        for (int i=0 ; i < infixExpr.length() ; i++){ // this part of the method converts unary negative operators to the symbol we'll be using to denote them, which is ~
-            if (infixExpr.charAt(i) == '-'){
-                if (isOperand(infixExpr.charAt(i+1))){
-                    if (i != infixExpr.length()){
-                        if (isOperator(infixExpr.charAt(i))) {
-                            negationsConverted.append('~');
-                        }
-                    }
-                    else{
-                        negationsConverted.append(infixExpr.charAt(i));
-                    }
+
+        for (int i = 0 ; i < exprNoWhiteSpaces.length() ; i++){ // this part of the method converts unary negative operators to the symbol we'll be using to denote them, which is ~
+            if (exprNoWhiteSpaces.charAt(i) == '-') {
+                if (i == 0) {
+                    negationsConverted.append('~');
+                } else if (isOperator(exprNoWhiteSpaces.charAt(i - 1))) {
+                    negationsConverted.append('~');
+                } else if (exprNoWhiteSpaces.charAt(i - 1) == '(') {
+                    negationsConverted.append('~');
+                } else {
+                    negationsConverted.append(exprNoWhiteSpaces.charAt(i));
                 }
-                else{
-                    negationsConverted.append(infixExpr.charAt(i));
-                }
-            }
-            else{
-                negationsConverted.append(infixExpr.charAt(i));
+            } else {
+                negationsConverted.append(exprNoWhiteSpaces.charAt(i));
             }
         }
 
         StringBuilder output = new StringBuilder();
-        for (int i = 0; i < negationsConverted.length(); i++){
+        Stack<Character> characterStack = new Stack<Character>();
 
-            if (isOperator(negationsConverted.charAt(i))){
+        for (int i = 0; i < negationsConverted.length(); i++){
+            if (negationsConverted.charAt(i) == '~'){
+                output.append('-');
+            }
+            else if (isOperator(negationsConverted.charAt(i))){
                 while (!characterStack.isEmpty() && characterStack.peek() != '('){
                     if (operatorGreaterOrEqual(characterStack.peek(), negationsConverted.charAt(i))){
                         output.append(characterStack.pop());
@@ -73,46 +73,7 @@ public class InfixToPostfix {
         return output.toString();
     }
 
-    public int evaluatePostfix(String postfixExpr)
-    {
-        char[] chars = postfixExpr.toCharArray();
-        Stack<Integer> stack = new Stack<Integer>();
-        for (char c : chars)
-        {
-            if (isOperand(c))
-            {
-                stack.push(c - '0'); // convert char to int val
-            }
-            else if (isOperator(c))
-            {
-                int op1 = stack.pop();
-                int op2 = stack.pop();
-                int result;
-                switch (c) {
-                    case '*':
-                        result = op1 * op2;
-                        stack.push(result);
-                        break;
-                    case '/':
-                        result = op2 / op1;
-                        stack.push(result);
-                        break;
-                    case '+':
-                        result = op1 + op2;
-                        stack.push(result);
-                        break;
-                    case '-':
-                        result = op2 - op1;
-                        stack.push(result);
-                        break;
-                }
-            }
-        }
-        return stack.pop();
-    }
-
-    private static int getPrecedence(char operator)
-    {
+    private static int getPrecedence(char operator){
         if (operator == '~') {
             return 0;
         }
