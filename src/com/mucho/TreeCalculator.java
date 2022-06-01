@@ -25,17 +25,20 @@ public class TreeCalculator {
         if (operator.equals("+")){
             return leftNodeValue + rightNodeValue;
         }
-        if (operator.equals("-")){
+        else if (operator.equals("-")){
             return leftNodeValue - rightNodeValue;
         }
-        if (operator.equals("*")){
+        else if (operator.equals("*")){
             return leftNodeValue * rightNodeValue;
         }
-        if (operator.equals("/")){
+        else if (operator.equals("/")){
             return leftNodeValue / rightNodeValue;
         }
-        if (operator.equals("^")){
+        else if (operator.equals("^")){
             return Math.pow(leftNodeValue, rightNodeValue);
+        }
+        else if (operator.equals("~")){
+            return leftNodeValue * -1;
         }
         return 0; // if we get to here, it means that something has gone wrong
     }
