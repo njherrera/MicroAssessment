@@ -14,7 +14,6 @@ public class InfixToPostfix {
         String exprNoWhiteSpaces = infixExpr.replaceAll("\\s+","");
         StringBuilder negationsConverted = new StringBuilder();
 
-
         for (int i = 0 ; i < exprNoWhiteSpaces.length() ; i++){ // this part of the method converts unary negative operators to the symbol we'll be using to denote them, which is ~
             if (exprNoWhiteSpaces.charAt(i) == '-') {
                 if (i == 0) {
@@ -37,8 +36,7 @@ public class InfixToPostfix {
         for (int i = 0; i < negationsConverted.length(); i++){
             if (negationsConverted.charAt(i) == '~'){
                 output.append('~');
-            }
-            else if (isOperator(negationsConverted.charAt(i))){
+            } else if (isOperator(negationsConverted.charAt(i))){
                 while (!characterStack.isEmpty() && characterStack.peek() != '('){
                     if (operatorGreaterOrEqual(characterStack.peek(), negationsConverted.charAt(i))){
                         output.append(characterStack.pop());
@@ -49,11 +47,9 @@ public class InfixToPostfix {
                     }
                 }
                 characterStack.push(negationsConverted.charAt(i));
-            }
-            else if (negationsConverted.charAt(i) == '('){
+            } else if (negationsConverted.charAt(i) == '('){
                 characterStack.push(negationsConverted.charAt(i));
-            }
-            else if (negationsConverted.charAt(i) == ')'){
+            } else if (negationsConverted.charAt(i) == ')'){
                 while (!characterStack.isEmpty() && characterStack.peek() != '(') {
                     output.append(characterStack.pop());
                     output.append(' ');
@@ -61,8 +57,7 @@ public class InfixToPostfix {
                 if (!characterStack.isEmpty()) {
                     characterStack.pop();
                 }
-            }
-            else if (Character.isDigit(negationsConverted.charAt(i))) {
+            } else if (Character.isDigit(negationsConverted.charAt(i))) {
                 output.append(negationsConverted.charAt(i));
 
                 if (i+1 >= negationsConverted.length() || !Character.isDigit(negationsConverted.charAt(i+1))) {

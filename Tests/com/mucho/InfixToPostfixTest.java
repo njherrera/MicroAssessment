@@ -28,7 +28,7 @@ class InfixToPostfixTest {
 
     @Test
     void simpleExponentTest(){
-        assertEquals("20 5 ^", InfixToPostfix.convertToPostfix("20^5").trim());
+        assertEquals("10 5 ^", InfixToPostfix.convertToPostfix("10^5").trim());
     }
 
     @Test
