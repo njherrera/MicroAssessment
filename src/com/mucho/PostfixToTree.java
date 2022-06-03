@@ -5,6 +5,8 @@ import java.util.StringTokenizer;
 
 public class PostfixToTree {
 
+    // methods are static so that no instantiation of a PostfixToTree object is necessary
+
     // tokenize the input expression (because of the implementation of InfixToPostfix, the input will always have spaces between each term)
     // if symbol is negation, create a one-child tree with negation symbol as root and the digits of the number as the left child
     // if symbol is operand, create one node tree and push it onto stack
@@ -41,7 +43,7 @@ public class PostfixToTree {
         try {
             Double.parseDouble(str);
             return true;
-        } catch (NumberFormatException ex){
+        } catch (NumberFormatException ex){ // if this exception happens, it means that whatever we attempted to read as a double isn't actually a number
             return false;
         }
     }
